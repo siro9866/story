@@ -24,4 +24,7 @@ CREATE TABLE `t_bootstrap` (
 			PRIMARY KEY (`auto_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+INSERT INTO t_bootstrap(sample1,sample2,sample3,sample4,sample5,sample6,sample7,sample8,sample9,sample10,in_date) VALUES ('샘플1','샘플2','샘플3','샘플4','샘플5','샘플6','샘플7','샘플8','샘플9','샘플10', now());
+
 INSERT INTO t_bootstrap(sample1,sample2,sample3,sample4,sample5,sample6,sample7,sample8,sample9,sample10,del_yn,in_date)SELECT sample1,sample2,sample3,sample4,sample5,sample6,sample7,sample8,sample9,sample10,del_yn,now()FROM t_bootstrap;
