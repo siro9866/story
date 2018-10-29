@@ -2,13 +2,13 @@ package com.neo.story.sample.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +28,11 @@ public class BootstrapController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BootstrapController.class);
 	
-	@Autowired
+	@Resource(name="bootstrapService")
 	private BootstrapService bootstrapService;
 	
 	@RequestMapping(value="/bootstrapList")
-	public ModelAndView bootstrapList(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
+	public ModelAndView bootstrapList(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		
 		List<BootstrapDto> resultList = null;
@@ -46,7 +46,7 @@ public class BootstrapController {
 			//paging		
 		}
 		
-		logger.debug("getSearchFromDt:"+bootstrapDto.getSearchFromDt());
+		logger.info("getSearchFromDt:"+bootstrapDto.getSearchFromDt());
 		logger.debug("getSearchToDt:"+bootstrapDto.getSearchToDt());
 		logger.debug("bootstrapDto:"+bootstrapDto.toString());
 		
@@ -59,7 +59,7 @@ public class BootstrapController {
 	}
 	
 	@RequestMapping(value="/bootstrapDetail")
-	public ModelAndView bootstrapDetail(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
+	public ModelAndView bootstrapDetail(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sample/bootstrapDetail");
 		BootstrapDto result = null;
@@ -79,7 +79,7 @@ public class BootstrapController {
 	}
 	
 	@RequestMapping(value="/bootstrapForm")
-	public ModelAndView bootstrapForm(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
+	public ModelAndView bootstrapForm(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("/sample/bootstrapForm");
@@ -92,7 +92,7 @@ public class BootstrapController {
 	}	
 	
 	@RequestMapping(value="/bootstrapInsert")
-	public ModelAndView bootstrapInsert(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView bootstrapInsert(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		JSONObject json = new JSONObject();
 		mav.setViewName("jsonView");
@@ -120,7 +120,7 @@ public class BootstrapController {
 	}
 	
 	@RequestMapping(value="/bootstrapUpdate")
-	public ModelAndView bootstrapUpdate(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView bootstrapUpdate(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		JSONObject json = new JSONObject();
 		mav.setViewName("jsonView");
@@ -150,7 +150,7 @@ public class BootstrapController {
 	
 	@RequestMapping(value="/bootstrapDelete")
 	@ResponseBody
-	public ModelAndView bootstrapDelete(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView bootstrapDelete(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		JSONObject json = new JSONObject();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("jsonView");
@@ -172,6 +172,5 @@ public class BootstrapController {
 		return mav;
 		
 	}
-	
 	
 }

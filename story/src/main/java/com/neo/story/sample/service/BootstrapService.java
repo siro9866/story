@@ -13,11 +13,11 @@ import net.sf.json.JSONObject;
 
 public interface BootstrapService {
 	
-	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto);
-	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto);
-	public JSONObject bootstrapInsert(BootstrapDto bootstrapDto, HttpServletRequest request);
-	public JSONObject bootstrapUpdate(BootstrapDto bootstrapDto, HttpServletRequest request);
-	public JSONObject bootstrapDelete(BootstrapDto bootstrapDto, HttpServletRequest request);
+	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto) throws Exception;
+	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto) throws Exception;
+	public JSONObject bootstrapInsert(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception;
+	public JSONObject bootstrapUpdate(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception;
+	public JSONObject bootstrapDelete(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception;
+	public String getSeq(HashMap<String, String> map) throws Exception;
 	
-	public String getString(HashMap<String, String> map);
 }

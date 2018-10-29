@@ -3,16 +3,16 @@ package com.neo.story.sample.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.neo.story.dao.Dao;
 import com.neo.story.dto.BootstrapDto;
+import com.neo.story.sample.dao.BootstrapDAO;
 
 import net.sf.json.JSONObject;
 
@@ -22,32 +22,24 @@ public class BootstrapServiceImpl implements BootstrapService{
 
 	private static final Logger logger = LoggerFactory.getLogger(BootstrapServiceImpl.class);
 	
-	@Autowired
-	private Dao dao;
+	@Resource(name="bootstrapDAO")
+	private BootstrapDAO bootstrapDAO;
 
 	@Value("#{config['TABLESC']}") String TABLESC;
 	@Value("#{config['TABLE_T_BOOTSTRAP']}") String TABLE_T_BOOTSTRAP;
 	
 	@Override
-	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto) {
-		String sql = "sample.bootstrap.bootstrapList";
-		
-		List<BootstrapDto> result = (List<BootstrapDto>) dao.list(sql, bootstrapDto);
-		return result;
+	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto) throws Exception {
+		return bootstrapDAO.bootstrapList(bootstrapDto);
 	}
 	
 	@Override
-	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto) {
-		String sql = "sample.bootstrap.bootstrapDetail";
-		
-		BootstrapDto result = (BootstrapDto) dao.detail(sql, bootstrapDto);
-		return result;
+	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto) throws Exception {
+		return (BootstrapDto) bootstrapDAO.bootstrapDetail(bootstrapDto);
 	}
 
 	@Override
-	public JSONObject bootstrapInsert(BootstrapDto bootstrapDto, HttpServletRequest request) {
-		String sql = "sample.bootstrap.bootstrapInsert";
-		String sql2 = "sample.bootstrap.autoSeq";
+	public JSONObject bootstrapInsert(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception {
 
 		JSONObject json = new JSONObject();
 		
@@ -58,8 +50,8 @@ public class BootstrapServiceImpl implements BootstrapService{
 		map.put("tableNM", TABLE_T_BOOTSTRAP);
 		
 		try {
-			autoSeq = dao.getString(sql2, map);		
-			dao.insert(sql, bootstrapDto);
+			autoSeq = bootstrapDAO.getSeq(map);		
+			bootstrapDAO.bootstrapInsert(bootstrapDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,13 +63,12 @@ public class BootstrapServiceImpl implements BootstrapService{
 	}
 
 	@Override
-	public JSONObject bootstrapUpdate(BootstrapDto bootstrapDto, HttpServletRequest request) {
-		String sql = "sample.bootstrap.bootstrapUpdate";
+	public JSONObject bootstrapUpdate(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception {
 		
 		JSONObject json = new JSONObject();
 		
 		try {
-			dao.update(sql, bootstrapDto);
+			bootstrapDAO.bootstrapUpdate(bootstrapDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,13 +77,11 @@ public class BootstrapServiceImpl implements BootstrapService{
 	}
 
 	@Override
-	public JSONObject bootstrapDelete(BootstrapDto bootstrapDto, HttpServletRequest request) {
-		String sql = "sample.bootstrap.bootstrapDelete";
-
+	public JSONObject bootstrapDelete(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception {
 		JSONObject json = new JSONObject();
 		
 		try {
-			dao.delete(sql, bootstrapDto);
+			bootstrapDAO.bootstrapDelete(bootstrapDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,9 +90,8 @@ public class BootstrapServiceImpl implements BootstrapService{
 	}
 
 	@Override
-	public String getString(HashMap<String, String> map) {
-		String sql = "sample.sample.autoSeq";
-		return dao.getString(sql, map);
+	public String getSeq(HashMap<String, String> map) throws Exception {
+		return bootstrapDAO.getSeq(map);
 	}
 
 }

@@ -10,17 +10,35 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<bean id ="dataSource" class= "org.apache.ibatis.datasource.pooled.PooledDataSource" >
-		<property name ="driver" value= "com.mysql.jdbc.Driver" />
-		<property name="poolPingQuery" value="select 1"/>
-		<property name="poolPingEnabled" value="true"/>
-		<property name="poolPingConnectionsNotUsedFor" value="7200000"/>
+<!-- 	<bean id ="dataSource" class= "org.apache.ibatis.datasource.pooled.PooledDataSource" > -->
+<!-- 		<property name ="driver" value= "com.mysql.jdbc.Driver" /> -->
+<!-- 		<property name="poolPingQuery" value="select 1"/> -->
+<!-- 		<property name="poolPingEnabled" value="true"/> -->
+<!-- 		<property name="poolPingConnectionsNotUsedFor" value="7200000"/> -->
 
-		<property name ="url" value= "jdbc:mysql://localhost:3306/siro9866" />
-		<property name ="username" value="siro9866" />
-		<property name ="password" value= "sangsil2" />
+<!-- 		<property name ="url" value= "jdbc:mysql://localhost:3306/siro9866" /> -->
+<!-- 		<property name ="username" value="siro9866" /> -->
+<!-- 		<property name ="password" value= "sangsil2" /> -->
+<!-- 	</bean > -->
 
-	</bean >
+
+    <bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/siro9866"/>
+        <property name="username" value="siro9866"/>
+        <property name="password" value="sangsil2"/>
+    </bean>
+
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceSpied" />
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="SQL         :  " />
+			</bean>
+		</property>
+	</bean>
+	
 	<bean id ="sqlSessionFactory" class= "org.mybatis.spring.SqlSessionFactoryBean" >
 		<property name ="dataSource" ref= "dataSource"></property >
 		<property name ="configLocation" value= "/WEB-INF/spring/mybatis-config.xml" ></property >
