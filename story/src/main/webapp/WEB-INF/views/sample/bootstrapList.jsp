@@ -179,7 +179,7 @@
 												<td>${result.sample9 }</td>
 												<td>${result.sample10 }</td>
 												<td>
-													<fmt:parseDate var="in_date" value="${result.in_date }" pattern="yyyy-MM-dd HH:mm:ss.S"/>
+													<fmt:parseDate var="in_date" value="${result.in_date }" pattern="yyyy-MM-dd HH:mm:ss"/>
 													<fmt:formatDate value="${in_date }" pattern="yyyy-MM-dd"/>														
 												</td>
 												<td>${result.in_user }</td>
@@ -262,7 +262,7 @@ $(function(){
 	$("input[name=searchFromDt], input[name=searchToDt]").datepicker();
 	
 	//검색어 키업 이벤트발생시 검색버튼 활성화 및 엔터키 이벤트 발생
-	$("#searchValue").bind("keyup", function(e){
+	$("input[name=searchValue]").bind("keyup", function(e){
 		//엔터키 클릭시 검색
 		if (e.keyCode == 13){
 			$("#pageNum").val("1");
