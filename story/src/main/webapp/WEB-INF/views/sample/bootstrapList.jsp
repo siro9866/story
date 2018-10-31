@@ -85,7 +85,7 @@
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
-					<li class="active-link"><a href="index.html"><i class="fa fa-desktop "></i>Dashboard</a></li>
+					<li class="active-link"><a href="/sample/bootstrapList.do"><i class="fa fa-desktop "></i>Dashboard</a></li>
 					<li><a href="ui.html"><i class="fa fa-table "></i>UI Elements</a></li>
 					<li><a href="blank.html"><i class="fa fa-edit "></i>Blank Page</a></li>
 				</ul>
@@ -130,9 +130,6 @@
 						</div>
 					</div>
 					<!-- /. ROW  -->
-					
-					
-					
 				</form>	 
 				<!--	S:검색조건 -->
 				<hr />
