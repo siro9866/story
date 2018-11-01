@@ -21,7 +21,7 @@ CREATE TABLE `t_bootstrap` (
 			`up_date` datetime DEFAULT NULL,
 			`up_user` varchar(50) DEFAULT NULL, 
 			`up_ip` varchar(20) DEFAULT NULL,
-			PRIMARY KEY (`auto_id`)
+			PRIMARY KEY (`bootstrap_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

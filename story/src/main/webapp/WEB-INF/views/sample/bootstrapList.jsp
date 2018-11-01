@@ -224,6 +224,10 @@
 	</div>
 
 
+	<div id="dialog" title="상세">
+		<p>이것은 기본 대화상자 입니다. 이동하거나 닫을 수 있습니다.</p>
+	</div>
+
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
@@ -287,6 +291,48 @@ $(function(){
 		$("form[name=frm]").attr("action", formlUrl);
 		$("form[name=frm]").submit();
 	});
+
+	
+	// dialog 설정
+	$('#dialog').dialog({
+		autoOpen: false,
+		resizable: false,
+		width:'auto'
+	});
+	// dialog 위치
+	$(document ).mousemove(function( event ) {
+		$("#dialog").parent("div").position({
+			my: "left+3 bottom-3",
+			of: event,
+			collision: "fit"
+		});
+	});
+	// 상세 미리보기 dialoag
+	$("#dataTable > tbody > tr")
+	.mouseenter(function() {
+		$("#bootstrap_id").val($(this).attr("id"));
+		var goUrl = "/sample/bootstrapDetailLayer.do";
+ 		$.ajax({
+			type:"post",
+			async:true,
+			url:goUrl,
+			data:$("form[name=frm]").serialize(),
+			dataType:"html",
+			success:function(responseData){
+				$("#dialog").html(responseData).dialog("open");
+				$(".ui-dialog-titlebar").hide();
+			},
+			error: function (jqXHR, exception){
+				alert("["+jqXHR.status+"]오류입니다.\n"+exception);
+				return;
+			}
+		});
+	})
+	.mouseleave(function() {
+		$("#bootstrap_id").val("");
+		$('#dialog').dialog("close");
+	});
+	
 	
 });
 

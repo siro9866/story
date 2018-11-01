@@ -78,6 +78,24 @@ public class BootstrapController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/bootstrapDetailLayer")
+	@ResponseBody
+	public ModelAndView bootstrapDetailLayer(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/sample/bootstrapDetailLayer");
+		BootstrapDto result = null;
+		
+		try {
+			//게시글정보
+			result = bootstrapService.bootstrapDetail(bootstrapDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mav.addObject("result", result);
+		return mav;
+	}
+	
 	@RequestMapping(value="/bootstrapForm")
 	public ModelAndView bootstrapForm(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 		ModelAndView mav = new ModelAndView();
