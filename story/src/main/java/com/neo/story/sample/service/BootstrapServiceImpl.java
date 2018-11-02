@@ -29,17 +29,17 @@ public class BootstrapServiceImpl implements BootstrapService{
 	@Value("#{config['TABLE_T_BOOTSTRAP']}") String TABLE_T_BOOTSTRAP;
 	
 	@Override
-	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto) throws Exception {
+	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto){
 		return bootstrapDAO.bootstrapList(bootstrapDto);
 	}
 	
 	@Override
-	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto) throws Exception {
+	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto){
 		return (BootstrapDto) bootstrapDAO.bootstrapDetail(bootstrapDto);
 	}
 
 	@Override
-	public JSONObject bootstrapInsert(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception {
+	public JSONObject bootstrapInsert(BootstrapDto bootstrapDto, HttpServletRequest request){
 
 		JSONObject json = new JSONObject();
 		
@@ -63,7 +63,7 @@ public class BootstrapServiceImpl implements BootstrapService{
 	}
 
 	@Override
-	public JSONObject bootstrapUpdate(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception {
+	public JSONObject bootstrapUpdate(BootstrapDto bootstrapDto, HttpServletRequest request){
 		
 		JSONObject json = new JSONObject();
 		
@@ -77,7 +77,7 @@ public class BootstrapServiceImpl implements BootstrapService{
 	}
 
 	@Override
-	public JSONObject bootstrapDelete(BootstrapDto bootstrapDto, HttpServletRequest request) throws Exception {
+	public JSONObject bootstrapDelete(BootstrapDto bootstrapDto, HttpServletRequest request){
 		JSONObject json = new JSONObject();
 		
 		try {
@@ -90,7 +90,7 @@ public class BootstrapServiceImpl implements BootstrapService{
 	}
 
 	@Override
-	public String getSeq(HashMap<String, String> map) throws Exception {
+	public String getSeq(HashMap<String, String> map){
 		return bootstrapDAO.getSeq(map);
 	}
 

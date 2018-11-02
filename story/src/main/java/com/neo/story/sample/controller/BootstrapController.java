@@ -32,7 +32,7 @@ public class BootstrapController {
 	private BootstrapService bootstrapService;
 	
 	@RequestMapping(value="/bootstrapList")
-	public ModelAndView bootstrapList(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+	public ModelAndView bootstrapList(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		
 		List<BootstrapDto> resultList = null;
@@ -59,7 +59,7 @@ public class BootstrapController {
 	}
 	
 	@RequestMapping(value="/bootstrapDetail")
-	public ModelAndView bootstrapDetail(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+	public ModelAndView bootstrapDetail(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sample/bootstrapDetail");
 		BootstrapDto result = null;
@@ -80,7 +80,7 @@ public class BootstrapController {
 	
 	@RequestMapping(value="/bootstrapDetailLayer")
 	@ResponseBody
-	public ModelAndView bootstrapDetailLayer(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+	public ModelAndView bootstrapDetailLayer(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/sample/bootstrapDetailLayer");
 		BootstrapDto result = null;
@@ -97,7 +97,7 @@ public class BootstrapController {
 	}
 	
 	@RequestMapping(value="/bootstrapForm")
-	public ModelAndView bootstrapForm(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+	public ModelAndView bootstrapForm(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("/sample/bootstrapForm");
@@ -110,7 +110,7 @@ public class BootstrapController {
 	}	
 	
 	@RequestMapping(value="/bootstrapInsert")
-	public ModelAndView bootstrapInsert(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+	public ModelAndView bootstrapInsert(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		JSONObject json = new JSONObject();
 		mav.setViewName("jsonView");
@@ -138,7 +138,7 @@ public class BootstrapController {
 	}
 	
 	@RequestMapping(value="/bootstrapUpdate")
-	public ModelAndView bootstrapUpdate(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+	public ModelAndView bootstrapUpdate(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		JSONObject json = new JSONObject();
 		mav.setViewName("jsonView");
@@ -168,7 +168,7 @@ public class BootstrapController {
 	
 	@RequestMapping(value="/bootstrapDelete")
 	@ResponseBody
-	public ModelAndView bootstrapDelete(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+	public ModelAndView bootstrapDelete(@ModelAttribute BootstrapDto bootstrapDto, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		JSONObject json = new JSONObject();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("jsonView");

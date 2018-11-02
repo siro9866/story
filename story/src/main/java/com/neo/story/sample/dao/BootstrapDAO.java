@@ -13,27 +13,27 @@ import com.neo.story.dto.BootstrapDto;
 public class BootstrapDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto) throws Exception{
+	public List<BootstrapDto> bootstrapList(BootstrapDto bootstrapDto){
 		return (List<BootstrapDto>)selectList("sample.bootstrap.bootstrapList", bootstrapDto);
 	}
 	
-	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto) throws Exception{
+	public BootstrapDto bootstrapDetail(BootstrapDto bootstrapDto){
 		return (BootstrapDto) selectOne("sample.bootstrap.bootstrapDetail", bootstrapDto);
 	}
 
-	public void bootstrapInsert(BootstrapDto bootstrapDto) throws Exception{
+	public void bootstrapInsert(BootstrapDto bootstrapDto){
 		insert("sample.bootstrap.bootstrapInsert", bootstrapDto);
 	}
 
-	public void bootstrapUpdate(BootstrapDto bootstrapDto) throws Exception{
+	public void bootstrapUpdate(BootstrapDto bootstrapDto){
 		update("sample.bootstrap.bootstrapUpdate", bootstrapDto);
 	}
 
-	public void bootstrapDelete(BootstrapDto bootstrapDto) throws Exception{
+	public void bootstrapDelete(BootstrapDto bootstrapDto){
 		update("sample.bootstrap.bootstrapDelete", bootstrapDto);
 	}
 	
-	public String getSeq(HashMap<String, String> map) throws Exception{
+	public String getSeq(HashMap<String, String> map){
 		return (String) selectOne("sample.bootstrap.autoSeq", map);
 	}
 	

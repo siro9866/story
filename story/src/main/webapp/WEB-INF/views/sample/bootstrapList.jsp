@@ -49,6 +49,7 @@
 	background-color: #ddd;
 	border-radius: 5px;
 }
+
 </style>
 
 <!-- E:FILE:style.jsp -->
@@ -147,7 +148,6 @@
 									<th>sample7</th>
 									<th>sample8</th>
 									<th>sample9</th>
-									<th>sample10</th>
 									<th>등록일</th>
 									<th>등록자</th>
 								</tr>
@@ -171,7 +171,6 @@
 												<td>${result.sample7 }</td>
 												<td>${result.sample8 }</td>
 												<td>${result.sample9 }</td>
-												<td>${result.sample10 }</td>
 												<td>
 													<fmt:parseDate var="in_date" value="${result.in_date }" pattern="yyyy-MM-dd HH:mm:ss"/>
 													<fmt:formatDate value="${in_date }" pattern="yyyy-MM-dd"/>														

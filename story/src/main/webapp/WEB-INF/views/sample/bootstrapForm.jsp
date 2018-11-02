@@ -140,7 +140,8 @@ table tbody tr td{text-align: left; margin-left: 1em;}
 							</div>
 							<div class="form-group">
 								<label for="sample10">sample10</label>
-								<input type="text" name="sample10" id="sample10" class="form-control" placeholder="sample10" value="${result.sample10 }" />
+<%-- 								<input type="text" name="sample10" id="sample10" class="form-control" placeholder="sample10" value="${result.sample10 }" /> --%>
+								<textarea name="sample10" id="sample10" rows="10" cols="100">${result.sample10 }</textarea>
 							</div>
 <!-- 							<div class="form-group"> -->
 <!-- 								<label for="board_nm">내용</label> -->
@@ -192,6 +193,9 @@ table tbody tr td{text-align: left; margin-left: 1em;}
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+	<!-- Smart Editor -->
+	<script src="/resources/smarteditor2-master/dist/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+
 
 <script>
 var listUrl = "/sample/bootstrapList.do";
@@ -202,16 +206,16 @@ var insertUrl = "/sample/bootstrapInsert.do";
 $(function(){
 	
 	//SmartEditor
-// 	var oEditors = [];
-// 	nhn.husky.EZCreator.createInIFrame({
-// 		oAppRef: oEditors,
-// 		elPlaceHolder: "board_txt",
-// 		sSkinURI: "/resources/plugIn/SmartEditor/SE2.3.10.O11329/SmartEditor2Skin.html",	
-// 		fCreator: "createSEditor2"
-// 	});	
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: "sample10",
+		sSkinURI: "/resources/smarteditor2-master/dist/SmartEditor2Skin.html",
+		fCreator: "createSEditor2"
+	});
 	
 	//초기값
-	if(${empty result.bootstrap_id}){
+	if("${empty result.bootstrap_id}"){
 		$("select option:eq(0)").attr("selected", "selected");
 	}else{
 		$("#isample1").val("${result.sample1}");
@@ -240,9 +244,9 @@ $(function(){
 
 		
 		//SmartEditor 에디터의 내용이 textarea에 적용된다.
-// 		oEditors.getById["board_txt"].exec("UPDATE_CONTENTS_FIELD", []);
+		oEditors.getById["sample10"].exec("UPDATE_CONTENTS_FIELD", []);
 		//SmartEditor 에디터의 내용에 대한 값 검증은 이곳에서
-// 		if ($("#board_txt").val() == "<p>&nbsp;</p>") {alert("내용을 입력하세요");	return false;}		
+		if ($("#sample10").val() == "") {alert("내용을 입력하세요");	return false;}		
 		
 		$("#sample1").val($("#isample1 option:selected").val());
 // 		$("#frm").attr("action", goUrl);
@@ -297,6 +301,7 @@ $(function(){
 	};
 
 });
+
 </script>
 
 </body>
