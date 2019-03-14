@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import org.junit.Test;
 
 public class MySQLConnectionTest {
-	//jinsol
+	//jinsol2
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/ryan?characterEncoding=UTF-8&serverTimezone=UTC";
 	private static final String USER = "root";
